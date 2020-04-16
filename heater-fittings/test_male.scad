@@ -14,16 +14,19 @@ use <lib/Threading.scad>
 // }
 // te
 
-for (i=[0:5]) {
-  D = 16.8+i*.1;
+for (i=[0:3]) {
+  // D = 16.7+i*.1;
+  D = 16.8;
   d = D-3;
   height = 7;
+  pitch = 1.1023-.1+i*.1;
+  // pitch = 1.10236220472;
   translate([i*21, 0, 0]) {
-    testModel(pitch = 1.25, height = height, D = D, d = d);
+    testModel(pitch = pitch, height = height, D = D, d = d);
     // translate( [20, 0, 0] )
     //   testModel( pitch = 2, height = height,  D = D, d = d );
     translate([0, 10, 0])
-      %text(text = str(D), size = 5, halign = "center");
+      %text(text = str(pitch), size = 4, halign = "center");
   }
 }
 
