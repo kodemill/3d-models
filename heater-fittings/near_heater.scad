@@ -4,38 +4,28 @@ use <lib/pipe.scad>
 
 $fn = 44;
 
-// emptyLoop(
-//   cr=10,
-//   angle=90,
-//   $step=2.8
-// );
-union() {
+for (i=[0:2]) {
+  D = 8.1+i*.1;
+  translate( [i*20, 0, 0] ) {
+    heater_joint( d = 3, D = D );
+    %translate( [-7, 10, 0] ) text(str(D));
+  }
+}
+
+module heater_joint (
+  d = 3,
+  D = 8
+) {
   male_height = 11;
-  d_male = 3;
-  D_male = 8;
-  R_male = D_male/2;
-  R_pipe = 3.6;
   stop_height = 11;
+  union() {
+    male( d = d, D = D, height = male_height, pitch = 1.2 );
+    translate( [0, 0, male_height-1] )
+      pipe(d = d, D = 12, height = stop_height);
 
-  male( d = d_male, D = D_male, height = male_height, pitch = 1.2 );
-  translate( [0, 0, male_height-1] )
-    pipe(d = d_male, D = 12, height = stop_height);
-
-  translate( [0, 0, stop_height+male_height*2-2] ) rotate( [180] )
-    male( d = d_male, D = D_male, height = male_height, pitch = 1.2 );
-    // translate( [0, 0, stop_height] )
-  // cylinder ()
-  // translate( [-R_pipe-R_male, 0, male_height-2] )
-  // rotate( [90, 0, 0] )
-  //   emptyLoop(
-  //     cr=R_pipe,
-  //     rin=d_male/2,
-  //     rout=R_male,
-  //     angle=90,
-  //     $step=1
-  //   );
-
-  // female( d=D_male, D=D_male+4, height=male_height, pitch=1.2 );
+    translate( [0, 0, stop_height+male_height*2-2] ) rotate( [180] )
+      male( d = d, D = D, height = male_height, pitch = 1.2 );
+  }
 }
 
 module pipe (

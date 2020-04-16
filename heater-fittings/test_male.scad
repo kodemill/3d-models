@@ -1,17 +1,33 @@
 use <lib/Threading.scad>
 
-for (i=[0:3]) {
-  D = 7.9+i*.1;
+// for (i=[0:3]) {
+//   D = 7.9+i*.1;
+//   d = D-3;
+//   height = 7;
+//   translate( [i*34, 0, 0] ) {
+//     testModel( pitch = 1.2, height = height, D = D, d = d );
+//     translate( [15, 0, 0] )
+//       testModel( pitch = 1.3, height = height,  D = D, d = d );
+//     translate([0, 10, 0])
+//       text(str(D));
+//   }
+// }
+// te
+
+for (i=[0:5]) {
+  D = 16.8+i*.1;
   d = D-3;
   height = 7;
-  translate( [i*34, 0, 0] ) {
-    testModel( pitch = 1.2, height = height, D = D, d = d );
-    translate( [15, 0, 0] )
-      testModel( pitch = 1.3, height = height,  D = D, d = d );
+  translate([i*21, 0, 0]) {
+    testModel(pitch = 1.25, height = height, D = D, d = d);
+    // translate( [20, 0, 0] )
+    //   testModel( pitch = 2, height = height,  D = D, d = d );
     translate([0, 10, 0])
-      text(str(D));
+      %text(text = str(D), size = 5, halign = "center");
   }
 }
+
+
 
 module testModel (
   d = 6,
