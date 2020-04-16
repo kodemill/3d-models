@@ -1,25 +1,11 @@
 use <lib/Threading.scad>
 
-// for (i=[0:3]) {
-//   D = 7.9+i*.1;
-//   d = D-3;
-//   height = 7;
-//   translate( [i*34, 0, 0] ) {
-//     testModel( pitch = 1.2, height = height, D = D, d = d );
-//     translate( [15, 0, 0] )
-//       testModel( pitch = 1.3, height = height,  D = D, d = d );
-//     translate([0, 10, 0])
-//       text(str(D));
-//   }
-// }
-// te
-
 for (i=[0:3]) {
   // D = 16.7+i*.1;
   D = 16.8;
   d = D-3;
   height = 7;
-  pitch = 1.1023-.1+i*.1;
+  pitch = 1.8143-.1+i*.1;
   // pitch = 1.10236220472;
   translate([i*21, 0, 0]) {
     testModel(pitch = pitch, height = height, D = D, d = d);
@@ -37,7 +23,7 @@ module testModel (
   D = 10,
   windings = 5,
   height = 0,
-  thread_angle = 29,
+  thread_angle = 60,
   pitch = 1,
   $fn = 100,
 ) {
