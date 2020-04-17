@@ -1,7 +1,7 @@
 use <lib/Threading.scad>
 
-for (i=[-2:2]) {
-  D = 15.6+i*.1;
+for (i=[0:6]) {
+  D = 15.9+i*.1;
   d = D-6;
   height = 8;
   pitch = 1.4111;
