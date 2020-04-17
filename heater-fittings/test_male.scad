@@ -1,29 +1,25 @@
 use <lib/Threading.scad>
 
-for (i=[0:3]) {
-  // D = 16.7+i*.1;
-  D = 16.8;
-  d = D-3;
-  height = 7;
-  pitch = 1.8143-.1+i*.1;
-  // pitch = 1.10236220472;
-  translate([i*21, 0, 0]) {
-    testModel(pitch = pitch, height = height, D = D, d = d);
-    // translate( [20, 0, 0] )
-    //   testModel( pitch = 2, height = height,  D = D, d = d );
-    translate([0, 10, 0])
-      %text(text = str(pitch), size = 4, halign = "center");
+for (i=[-2:2]) {
+  D = 15.6+i*.1;
+  d = D-6;
+  height = 8;
+  pitch = 1.4111;
+
+  translate([i*(D+5),0,0]) {
+    testModel(pitch = pitch, height = height, D = D, d = d, thread_angle = 29);
+    % translate([0,10,0]) text(text = str(D), size = 4, halign = "center");
   }
 }
 
-
+// https://en.wikipedia.org/wiki/National_pipe_thread#cite_note-piping-designer-8
 
 module testModel (
   d = 6,
   D = 10,
   windings = 5,
   height = 0,
-  thread_angle = 60,
+  thread_angle = 29,
   pitch = 1,
   $fn = 100,
 ) {
