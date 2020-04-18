@@ -1,9 +1,9 @@
 use <lib/Threading.scad>
 
-for (i=[0:6]) {
-  D = 15.9+i*.1;
+for (i=[0:1]) {
+  D = 16.3+i*.1;
   d = D-6;
-  height = 8;
+  height = 14;
   pitch = 1.4111;
 
   translate([i*(D+5),0,0]) {
@@ -28,7 +28,7 @@ module testModel (
 
   union() {
     difference() {
-      cylinder( r = D/2+1, h = 2 );
+      cylinder( r = D/2+2, h = 2 );
       translate( [0, 0, -1] )
         cylinder(
           r = d/2,
@@ -36,7 +36,7 @@ module testModel (
         );
     }
     difference () {
-      threading( pitch = pitch, d = D, windings = windings, angle = thread_angle, full = true );
+      threading( pitch = pitch, d = D, D = d, windings = windings, angle = thread_angle, full = true );
       translate( [0, 0, -1] )
         cylinder( r = d/2, h = 2+pitch*(windings+1) );
     }
